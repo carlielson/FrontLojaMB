@@ -1,0 +1,37 @@
+<div class="row text-center">
+    <div class="col-12">
+<table class="table table-striped">
+    <thead>
+      <tr>        
+        <th scope="col"> Produto </th>
+        <th scope="col"> Preço </th>
+        <th scope="col"> Imagem </th>
+        <th scope="col"> Quantidade </th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of produtos">
+        <th scope="row"> {{item.produto.nome}} </th>
+        <td> {{item.produto.preco | currency:'BRL':true}} </td>
+        <td> <img [src]="'/assets/img/'+ item.produto.imagem " width="30" height="30" /></td>
+        <td> <input type="text" style="min-width:150px;" class="form-control" maxlength="10" [value]="item.quantidade" disabled> </td>
+        <td>
+            <button type="button" (click)="add(item.id)" class="btn btn-info btn-sm mr-2 pull-left">Add</button>
+            <button type="button" (click)="remove(item.id)" class="btn btn-danger btn-sm mr-2">Remove</button>
+        </td>
+      </tr>
+      <tr>
+          <td scope="row"> Total: </td>
+          <td colspan="4">{{ total | currency:'BRL':true}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<div class="row">
+    <div class="col-10"></div>
+    <div class="col-2">
+        <button type="button" (click)="finalizarCompra()"  class="btn btn-success btn-block">Finalizar Compra</button>
+    </div>    
+</div>

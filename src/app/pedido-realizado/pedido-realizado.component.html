@@ -1,0 +1,51 @@
+<div class="row text-center">   
+<div class="col-12">
+    <h5>Olá {{cliente?.nome}}, segue informações do seu pedido!!!</h5><br>
+    <h5>Pedido: {{ idLote.toUpperCase() }}</h5>    
+</div>
+
+<div class="col-12">
+    <table class="table">
+        <thead>
+            <tr>        
+              <th scope="col">Nome</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Telefone</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>{{ cliente?.nome}}</td>
+                  <td>{{ cliente?.email}}</td>
+                  <td>{{ cliente?.telefone | mask: '(00) 0?0000-0000'}}</td>
+              </tr>
+          </tbody>
+    </table>
+
+    <br />
+    <br />
+    <table class="table table-striped">
+        <thead>
+          <tr>        
+            <th scope="col">Produto</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Imagem</th>
+            <th scope="col">Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of produtos">
+            <th scope="row">{{item.produto.nome}}</th>
+            <td>{{item.produto.preco | currency:'BRL':true}}</td>
+            <td> <img [src]="'/assets/img/'+ item.produto.imagem " width="30" height="30" /></td>
+            <td> <input type="text" style="min-width:150px;" class="form-control" maxlength="10" [value]="item.quantidade" disabled> </td>           
+          </tr>
+          <tr>
+              <td scope="row">Total: </td>
+              <td colspan="4">{{ total | currency:'BRL':true}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+</div>

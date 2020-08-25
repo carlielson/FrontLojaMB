@@ -1,0 +1,22 @@
+<h6>Produtos</h6>
+<p-toast></p-toast>
+<div class="row text-center">
+  <div class="col-md-10"></div>
+  <div class="col-md-2">
+    <app-carrinho [cesta]="this.cesta"></app-carrinho>
+    <button type="button" [disabled]="this.cesta.length == 0"  (click)="confirmar()" class="btn btn-success btn-block">Cesta</button>
+  </div>
+</div>
+<div class="row">
+<div *ngFor="let item of produtos" class="col-md-5">
+  <div class="card" style="width: 18rem;">
+    <img [src]="'/assets/img/'+ item.imagem " width="180" height="260" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{item.nome}}</h5>
+      <p class="card-text">{{item.preco | currency:'BRL':true }}</p>
+      <button type="button" (click)="addCesta(item.id)" class="btn btn-primary btn-sm mr-2">Add Cesta</button>
+    </div>
+  </div>
+  <br>
+  </div>  
+</div>
